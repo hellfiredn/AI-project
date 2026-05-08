@@ -1,0 +1,16 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "totc/our-success",
+    "title": "TOTC · Our Success",
+    "description": "Heading + 5-stat counter row with gradient thin numbers.",
+    "category": "totc",
+    "icon": "chart-bar",
+    "keywords": ["stats", "counter", "success"],
+    "textdomain": "webwp",
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "render.php"
+    },
+    "supports": { "align": "full", "anchor": true, "jsx": false, "multiple": true }
+}

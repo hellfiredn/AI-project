@@ -1,0 +1,13 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "totc/latest-news",
+    "title": "TOTC · Latest News",
+    "description": "One featured article card + a stacked list of smaller ones.",
+    "category": "totc",
+    "icon": "megaphone",
+    "keywords": ["news", "articles"],
+    "textdomain": "webwp",
+    "acf": { "mode": "preview", "renderTemplate": "render.php" },
+    "supports": { "align": "full", "anchor": true, "jsx": false, "multiple": true }
+}

@@ -1,0 +1,13 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "totc/you-can-do",
+    "title": "TOTC · You Can Do",
+    "description": "Heading + description + learn-more link, next to a video play panel.",
+    "category": "totc",
+    "icon": "video-alt3",
+    "keywords": ["video", "play"],
+    "textdomain": "webwp",
+    "acf": { "mode": "preview", "renderTemplate": "render.php" },
+    "supports": { "align": "full", "anchor": true, "jsx": false, "multiple": true }
+}

@@ -1,0 +1,13 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "totc/explore-course",
+    "title": "TOTC · Explore Course",
+    "description": "Blue 3/4-width background with horizontal pill cards and featured course.",
+    "category": "totc",
+    "icon": "book",
+    "keywords": ["course", "explore"],
+    "textdomain": "webwp",
+    "acf": { "mode": "preview", "renderTemplate": "render.php" },
+    "supports": { "align": "full", "anchor": true, "jsx": false, "multiple": true }
+}

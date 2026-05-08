@@ -1,0 +1,26 @@
+{
+    "key": "group_totc_latest_news",
+    "title": "TOTC Latest News Block",
+    "fields": [
+        { "key": "field_ln_heading",  "label": "Heading",  "name": "heading",  "type": "text",     "default_value": "Latest News and Resources" },
+        { "key": "field_ln_subtitle", "label": "Subtitle", "name": "subtitle", "type": "text",     "default_value": "See the developments that have occurred to TOTC in the world." },
+        { "key": "field_ln_featured_image", "label": "Featured image", "name": "featured_image", "type": "image", "return_format": "array", "preview_size": "medium" },
+        { "key": "field_ln_featured_tag",   "label": "Featured tag",   "name": "featured_tag",   "type": "text", "default_value": "NEWS" },
+        { "key": "field_ln_featured_title", "label": "Featured title", "name": "featured_title", "type": "text" },
+        { "key": "field_ln_featured_body",  "label": "Featured body",  "name": "featured_body",  "type": "textarea", "rows": 3 },
+        {
+            "key": "field_ln_items", "label": "List items", "name": "items", "type": "repeater",
+            "layout": "block", "button_label": "Add item", "min": 0, "max": 10,
+            "sub_fields": [
+                { "key": "field_ln_item_image", "label": "Image", "name": "image", "type": "image", "return_format": "array", "preview_size": "thumbnail" },
+                { "key": "field_ln_item_tag_text",  "label": "Tag text",  "name": "tag_text",  "type": "text", "default_value": "NEWS" },
+                { "key": "field_ln_item_tag_style", "label": "Tag style", "name": "tag_style", "type": "select",
+                  "choices": { "news": "Green (NEWS)", "press": "Pink (PRESS RELEASE)" }, "default_value": "news" },
+                { "key": "field_ln_item_title", "label": "Title", "name": "title", "type": "text" },
+                { "key": "field_ln_item_body",  "label": "Body",  "name": "body",  "type": "textarea", "rows": 2 }
+            ]
+        }
+    ],
+    "location": [[{ "param": "block", "operator": "==", "value": "totc/latest-news" }]],
+    "active": true, "show_in_rest": 0, "modified": 1713780000
+}

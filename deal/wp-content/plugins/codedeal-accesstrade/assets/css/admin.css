@@ -1,0 +1,41 @@
+.cdat-wrap { max-width: 1200px; }
+.cdat-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    margin-top: 14px;
+}
+.cdat-card {
+    background: #fff;
+    padding: 18px 22px;
+    border: 1px solid #dcdcde;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+.cdat-card h2 { margin-top: 0; font-size: 16px; }
+.cdat-side .cdat-card { margin-bottom: 16px; }
+.cdat-log-error { background: #fef2f2; }
+.cdat-log-warn  { background: #fefce8; }
+.cdat-log-info  { background: #f8fafc; }
+@media (max-width: 900px) {
+    .cdat-grid { grid-template-columns: 1fr; }
+}
+.cdat-probe-form {
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: end;
+    margin: 12px 0;
+}
+.cdat-probe-form label { display: flex; flex-direction: column; gap: 4px; font-size: 12px; }
+.cdat-probe-form input { padding: 6px 10px; }
+.cdat-probe-result {
+    margin-top: 14px; padding: 12px;
+    background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px;
+}
+.cdat-ok  { background: #16a34a; color: #fff; padding: 2px 8px; border-radius: 4px; font-weight: 700; }
+.cdat-err { background: #dc2626; color: #fff; padding: 2px 8px; border-radius: 4px; font-weight: 700; }
+.cdat-gen-form {
+    display: flex; flex-wrap: wrap; gap: 12px; align-items: end;
+    margin-top: 14px; padding: 14px;
+    background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 8px;
+}
+.cdat-gen-form label { display: flex; flex-direction: column; gap: 4px; font-size: 12px; font-weight: 600; }
+.cdat-gen-form select { padding: 6px 10px; min-width: 200px; }

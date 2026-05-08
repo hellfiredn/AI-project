@@ -1,0 +1,42 @@
+{
+    "key": "group_totc_hero",
+    "title": "TOTC Hero Block",
+    "fields": [
+        { "key": "field_hero_heading_prefix",    "label": "Brush word (highlighted)", "name": "heading_prefix",    "type": "text",     "default_value": "Studying" },
+        { "key": "field_hero_heading_suffix",    "label": "Heading suffix (HTML ok)", "name": "heading_suffix",    "type": "textarea", "rows": 2, "new_lines": "br", "default_value": "Online is<br>now much easier" },
+        { "key": "field_hero_lead",              "label": "Lead paragraph",           "name": "lead",              "type": "textarea", "rows": 3, "default_value": "TOTC is an interesting platform that will teach you in more an interactive way." },
+        { "key": "field_hero_btn_primary_text",  "label": "Primary button text",      "name": "btn_primary_text",  "type": "text",     "default_value": "Join for free" },
+        { "key": "field_hero_btn_primary_url",   "label": "Primary button URL",       "name": "btn_primary_url",   "type": "url",      "default_value": "#" },
+        { "key": "field_hero_btn_play_text",     "label": "Play button text",         "name": "btn_play_text",     "type": "text",     "default_value": "Watch how it works" },
+        { "key": "field_hero_hero_image",        "label": "Hero image (transparent PNG)", "name": "hero_image",    "type": "image",    "return_format": "array", "preview_size": "medium" },
+        {
+            "key": "field_hero_float_cards",
+            "label": "Floating cards (max 3)",
+            "name": "float_cards",
+            "type": "repeater",
+            "min": 0, "max": 3,
+            "layout": "block",
+            "button_label": "Add card",
+            "sub_fields": [
+                { "key": "field_hero_card_icon",  "label": "Icon class (bi-*)", "name": "icon_class", "type": "text", "default_value": "bi-journal-bookmark-fill" },
+                { "key": "field_hero_card_tone",  "label": "Icon tone",         "name": "tone",       "type": "select",
+                  "choices": { "teal": "Teal", "orange": "Orange", "purple": "Purple", "pink": "Pink" }, "default_value": "teal" },
+                { "key": "field_hero_card_title", "label": "Title",             "name": "title",      "type": "text" },
+                { "key": "field_hero_card_sub",   "label": "Subtitle",          "name": "subtitle",   "type": "text" },
+                { "key": "field_hero_card_btn_t", "label": "Button text (opt)", "name": "button_text","type": "text" },
+                { "key": "field_hero_card_btn_u", "label": "Button URL",        "name": "button_url", "type": "url" }
+            ]
+        }
+    ],
+    "location": [[{ "param": "block", "operator": "==", "value": "totc/hero" }]],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1713780000
+}

@@ -1,0 +1,13 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "totc/all-in-one",
+    "title": "TOTC · All-In-One",
+    "description": "Three colored-border feature cards with circle icons.",
+    "category": "totc",
+    "icon": "screenoptions",
+    "keywords": ["cards", "features"],
+    "textdomain": "webwp",
+    "acf": { "mode": "preview", "renderTemplate": "render.php" },
+    "supports": { "align": "full", "anchor": true, "jsx": false, "multiple": true }
+}
