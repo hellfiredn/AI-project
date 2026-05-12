@@ -1,0 +1,13 @@
+﻿{
+    "state":  "47fb0547389946b7b73ee16b6dcecdcc",
+    "appId":  "2471921323267515",
+    "pageId":  "61588847056636",
+    "graphVersion":  "v24.0",
+    "redirectUri":  "https://taphoagiamgia.com/",
+    "scopes":  [
+                   "pages_show_list",
+                   "pages_manage_posts",
+                   "pages_read_engagement"
+               ],
+    "createdAt":  "2026-05-12T16:25:29.6356064+07:00"
+}
