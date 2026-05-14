@@ -12,6 +12,38 @@
         });
     }
 
+    /* ---------- Home banner Swiper ---------- */
+    document.querySelectorAll('[data-cd-banner-slider]').forEach((slider) => {
+        if (!window.Swiper) return;
+
+        const slideCount = slider.querySelectorAll('.swiper-slide').length;
+        const options = {
+            loop: slideCount > 1,
+            speed: 650,
+            autoplay: slideCount > 1 ? {
+                delay: 4500,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+            } : false,
+            keyboard: {
+                enabled: true,
+            },
+        };
+
+        if (slideCount > 1) {
+            options.pagination = {
+                el: slider.querySelector('.swiper-pagination'),
+                clickable: true,
+            };
+            options.navigation = {
+                prevEl: slider.querySelector('.swiper-button-prev'),
+                nextEl: slider.querySelector('.swiper-button-next'),
+            };
+        }
+
+        new window.Swiper(slider, options);
+    });
+
     /* ---------- Toast helper ---------- */
     let toastEl;
     function toast(msg) {

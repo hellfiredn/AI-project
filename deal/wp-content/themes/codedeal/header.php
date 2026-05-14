@@ -54,11 +54,10 @@ if (!defined('ABSPATH')) exit; ?>
                 </form>
 
                 <?php
-                wp_nav_menu([
+                $primary_menu_args = [
                     'theme_location' => 'primary',
                     'container'      => false,
                     'menu_class'     => 'navbar-nav ms-auto',
-                    'add_li_class'   => 'nav-item',
                     'fallback_cb'    => function () {
                         echo '<ul class="navbar-nav ms-auto">';
                         $items = [
@@ -73,7 +72,16 @@ if (!defined('ABSPATH')) exit; ?>
                         }
                         echo '</ul>';
                     },
-                ]);
+                ];
+
+                if (!has_nav_menu('primary')) {
+                    $main_menu = codedeal_main_menu_object();
+                    if ($main_menu) {
+                        $primary_menu_args['menu'] = $main_menu;
+                    }
+                }
+
+                wp_nav_menu($primary_menu_args);
                 ?>
             </div>
         </div>

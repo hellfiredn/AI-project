@@ -218,12 +218,49 @@ a:hover { color: var(--cd-primary-dark); }
     background: linear-gradient(180deg, var(--cd-bg-soft), #fff);
     padding: 28px 0 48px;
 }
-.cd-brand-showcase img {
+.cd-banner-slider {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+.cd-banner-slider__link {
+    display: block;
+}
+.cd-banner-slider img {
     display: block;
     width: 100%;
-    height: auto;
+    aspect-ratio: 16 / 7;
+    height: 100%;
+    object-fit: cover;
     border-radius: 8px;
-    box-shadow: var(--cd-shadow-lg);
+    box-shadow: none;
+}
+.cd-banner-slider__nav {
+    --swiper-navigation-size: 18px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(225,29,72,0.18);
+    border-radius: 50%;
+    background: rgba(255,255,255,0.94);
+    color: var(--cd-primary);
+    box-shadow: none;
+}
+.cd-banner-slider__nav::after {
+    font-weight: 800;
+}
+.cd-banner-slider__pagination {
+    bottom: 14px !important;
+}
+.cd-banner-slider__pagination .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    background: rgba(15,23,42,0.28);
+    opacity: 1;
+}
+.cd-banner-slider__pagination .swiper-pagination-bullet-active {
+    width: 28px;
+    border-radius: 999px;
+    background: var(--cd-primary);
 }
 
 /* Carousel slide (hero) */
