@@ -1,0 +1,95 @@
+name: "Tạp Hóa Giảm Giá: Đăng bài SEO mỗi tối"
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    # 20:30 Asia/Ho_Chi_Minh (UTC+7) ~= 13:30 UTC
+    - cron: "30 13 * * *"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: taphoagiamgia-seo-nightly
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python deps
+        run: python -m pip install --upgrade pip pillow
+
+      - name: Write auto-post/.env from GitHub Secrets
+        env:
+          WEBSITE_AUTHOR: ${{ secrets.WEBSITE_AUTHOR }}
+          WEBSITE_APP_PASS: ${{ secrets.WEBSITE_APP_PASS }}
+          WEBSITE_URL: ${{ secrets.WEBSITE_URL }}
+          WP_API_BASE: ${{ secrets.WP_API_BASE }}
+          WP_POSTS_ENDPOINT: ${{ secrets.WP_POSTS_ENDPOINT }}
+          WP_MEDIA_ENDPOINT: ${{ secrets.WP_MEDIA_ENDPOINT }}
+          WP_USERS_ME_ENDPOINT: ${{ secrets.WP_USERS_ME_ENDPOINT }}
+          WP_AUTH_METHOD: ${{ secrets.WP_AUTH_METHOD }}
+          WP_POST_STATUS: ${{ secrets.WP_POST_STATUS }}
+          WP_POST_TYPE: ${{ secrets.WP_POST_TYPE }}
+          WP_CREATE_MISSING_TERMS: ${{ secrets.WP_CREATE_MISSING_TERMS }}
+          WP_DEFAULT_CATEGORY_SLUG: ${{ secrets.WP_DEFAULT_CATEGORY_SLUG }}
+          WP_FALLBACK_CATEGORY_SLUG: ${{ secrets.WP_FALLBACK_CATEGORY_SLUG }}
+          WP_DEFAULT_TAGS: ${{ secrets.WP_DEFAULT_TAGS }}
+          CONTENT_LANGUAGE: ${{ secrets.CONTENT_LANGUAGE }}
+          CONTENT_MIN_WORDS: ${{ secrets.CONTENT_MIN_WORDS }}
+          CONTENT_MAX_WORDS: ${{ secrets.CONTENT_MAX_WORDS }}
+          CONTENT_TIMEZONE: ${{ secrets.CONTENT_TIMEZONE }}
+          CONTENT_DISCLOSURE: ${{ secrets.CONTENT_DISCLOSURE }}
+          WEBSITE_COUPON_URL: ${{ secrets.WEBSITE_COUPON_URL }}
+          WEBSITE_DEAL_URL: ${{ secrets.WEBSITE_DEAL_URL }}
+          WEBSITE_BLOG_URL: ${{ secrets.WEBSITE_BLOG_URL }}
+          WEBSITE_FACEBOOK_URL: ${{ secrets.WEBSITE_FACEBOOK_URL }}
+          WP_UPLOAD_FEATURED_IMAGE: ${{ secrets.WP_UPLOAD_FEATURED_IMAGE }}
+          WP_SET_FEATURED_IMAGE: ${{ secrets.WP_SET_FEATURED_IMAGE }}
+          IMAGE_MAIN_WIDTH: ${{ secrets.IMAGE_MAIN_WIDTH }}
+          IMAGE_MAIN_HEIGHT: ${{ secrets.IMAGE_MAIN_HEIGHT }}
+          IMAGE_THUMB_WIDTH: ${{ secrets.IMAGE_THUMB_WIDTH }}
+          IMAGE_THUMB_HEIGHT: ${{ secrets.IMAGE_THUMB_HEIGHT }}
+          IMAGE_FORMAT: ${{ secrets.IMAGE_FORMAT }}
+          IMAGE_ALT_PREFIX: ${{ secrets.IMAGE_ALT_PREFIX }}
+        run: |
+          python - <<'PY'
+          import os, pathlib
+          keys = [
+            "WEBSITE_AUTHOR","WEBSITE_APP_PASS",
+            "WEBSITE_URL","WP_API_BASE","WP_POSTS_ENDPOINT","WP_MEDIA_ENDPOINT","WP_USERS_ME_ENDPOINT","WP_AUTH_METHOD",
+            "WP_POST_STATUS","WP_POST_TYPE","WP_CREATE_MISSING_TERMS","WP_DEFAULT_CATEGORY_SLUG","WP_FALLBACK_CATEGORY_SLUG","WP_DEFAULT_TAGS",
+            "CONTENT_LANGUAGE","CONTENT_MIN_WORDS","CONTENT_MAX_WORDS","CONTENT_TIMEZONE","CONTENT_DISCLOSURE",
+            "WEBSITE_COUPON_URL","WEBSITE_DEAL_URL","WEBSITE_BLOG_URL","WEBSITE_FACEBOOK_URL",
+            "WP_UPLOAD_FEATURED_IMAGE","WP_SET_FEATURED_IMAGE",
+            "IMAGE_MAIN_WIDTH","IMAGE_MAIN_HEIGHT","IMAGE_THUMB_WIDTH","IMAGE_THUMB_HEIGHT","IMAGE_FORMAT","IMAGE_ALT_PREFIX",
+          ]
+          out = []
+          for k in keys:
+            v = os.environ.get(k)
+            if v is None or v == "":
+              continue
+            out.append(f"{k}={v}")
+          env_path = pathlib.Path("auto-post/.env")
+          env_path.parent.mkdir(parents=True, exist_ok=True)
+          env_path.write_text("\n".join(out) + "\n", encoding="utf-8")
+          print("Wrote auto-post/.env (secrets not printed).")
+          PY
+
+      - name: Run nightly SEO post publisher
+        run: node auto-post/run_seo_post.mjs
