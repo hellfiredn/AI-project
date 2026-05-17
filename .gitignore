@@ -1,3 +1,42 @@
 social-media-fanpage/facebook-env.local.ps1
 social-media-fanpage/logs/
 social-media-fanpage/outbox/
+auto-post/.env
+webwp/
+
+# Generated media and large visual outputs
+video_lopmoi/
+outputs/
+auto-post/out/
+
+# Images
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.bmp
+*.tif
+*.tiff
+*.ico
+*.svg
+
+# Videos
+*.mp4
+*.mov
+*.webm
+*.mkv
+*.avi
+*.m4v
+*.mpg
+*.mpeg
+*.3gp
+*.wmv
+
+# Audio
+*.mp3
+*.wav
+*.m4a
+*.aac
+*.flac
+*.ogg
