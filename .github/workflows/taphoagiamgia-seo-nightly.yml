@@ -1,10 +1,8 @@
 name: "Tạp Hóa Giảm Giá: Đăng bài SEO mỗi tối"
 
 on:
+  # Manual only. Scheduled publishing is disabled so GitHub will not auto-post.
   workflow_dispatch: {}
-  schedule:
-    # 20:30 Asia/Ho_Chi_Minh (UTC+7) ~= 13:30 UTC
-    - cron: "30 13 * * *"
 
 permissions:
   contents: read
