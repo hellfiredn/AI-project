@@ -50,6 +50,9 @@ jobs:
           WP_DEFAULT_CATEGORY_SLUG: ${{ secrets.WP_DEFAULT_CATEGORY_SLUG }}
           WP_FALLBACK_CATEGORY_SLUG: ${{ secrets.WP_FALLBACK_CATEGORY_SLUG }}
           WP_DEFAULT_TAGS: ${{ secrets.WP_DEFAULT_TAGS }}
+          WP_FETCH_TIMEOUT_MS: "30000"
+          WP_FETCH_RETRIES: "3"
+          WP_FETCH_RETRY_DELAY_MS: "5000"
           CONTENT_LANGUAGE: ${{ secrets.CONTENT_LANGUAGE }}
           CONTENT_MIN_WORDS: ${{ secrets.CONTENT_MIN_WORDS }}
           CONTENT_MAX_WORDS: ${{ secrets.CONTENT_MAX_WORDS }}
@@ -74,6 +77,7 @@ jobs:
             "WEBSITE_AUTHOR","WEBSITE_APP_PASS",
             "WEBSITE_URL","WP_API_BASE","WP_POSTS_ENDPOINT","WP_MEDIA_ENDPOINT","WP_USERS_ME_ENDPOINT","WP_AUTH_METHOD",
             "WP_POST_STATUS","WP_POST_TYPE","WP_CREATE_MISSING_TERMS","WP_DEFAULT_CATEGORY_SLUG","WP_FALLBACK_CATEGORY_SLUG","WP_DEFAULT_TAGS",
+            "WP_FETCH_TIMEOUT_MS","WP_FETCH_RETRIES","WP_FETCH_RETRY_DELAY_MS",
             "CONTENT_LANGUAGE","CONTENT_MIN_WORDS","CONTENT_MAX_WORDS","CONTENT_TIMEZONE","CONTENT_DISCLOSURE",
             "WEBSITE_COUPON_URL","WEBSITE_DEAL_URL","WEBSITE_BLOG_URL","WEBSITE_FACEBOOK_URL",
             "WP_UPLOAD_FEATURED_IMAGE","WP_SET_FEATURED_IMAGE",
@@ -93,3 +97,14 @@ jobs:
 
       - name: Run nightly SEO post publisher
         run: node auto-post/run_seo_post.mjs
+
+      - name: Upload generated draft on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: taphoagiamgia-seo-draft
+          path: |
+            auto-post/out/*.draft.json
+            auto-post/out/*.webp
+          if-no-files-found: ignore
+          retention-days: 14

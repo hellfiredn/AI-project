@@ -46,6 +46,14 @@ function safeErrorMessage(err) {
   return msg.replaceAll(/Basic\s+[A-Za-z0-9+/=]+/g, "Basic [REDACTED]");
 }
 
+function intFromEnv(env, key, fallback, { min = 0 } = {}) {
+  const raw = env[key];
+  if (raw == null || raw === "") return fallback;
+  const value = Number(raw);
+  if (!Number.isFinite(value) || value < min) return fallback;
+  return Math.trunc(value);
+}
+
 async function main() {
   const envPath = path.join(__dirname, ".env");
   const env = loadDotEnvFile(envPath);
@@ -67,6 +75,11 @@ async function main() {
     .filter(Boolean);
 
   const timeZone = env.CONTENT_TIMEZONE || "Asia/Ho_Chi_Minh";
+  const requestOptions = {
+    timeoutMs: intFromEnv(env, "WP_FETCH_TIMEOUT_MS", 20_000, { min: 1 }),
+    retries: intFromEnv(env, "WP_FETCH_RETRIES", 3),
+    retryDelayMs: intFromEnv(env, "WP_FETCH_RETRY_DELAY_MS", 2_000),
+  };
   const todayISO = nowInTZ(timeZone);
   const { monthLabel, monthSlug, monthShort } = nextMonthInfo(todayISO);
 
@@ -184,7 +197,7 @@ async function main() {
   // Fetch recent posts to avoid slug duplication when possible.
   let recentPosts = [];
   try {
-    recentPosts = await wpGetRecentPosts({ postsEndpoint, perPage: 50 });
+    recentPosts = await wpGetRecentPosts({ postsEndpoint, perPage: 50, requestOptions });
   } catch (e) {
     throw new Error(
       `Cannot reach WordPress API at ${postsEndpoint}. Network/DNS might be blocked in this environment. Details: ${safeErrorMessage(
@@ -205,6 +218,7 @@ async function main() {
     slug: defaultCategorySlug,
     name: defaultCategorySlug,
     createMissing: createMissingTerms,
+    requestOptions,
   });
   const tagIds = [];
   for (const t of defaultTags) {
@@ -217,6 +231,7 @@ async function main() {
       slug: tagSlug,
       name: t,
       createMissing: createMissingTerms,
+      requestOptions,
     });
     if (tagId) tagIds.push(tagId);
   }
@@ -232,6 +247,7 @@ async function main() {
     bytes,
     mimeType: "image/webp",
     altText,
+    requestOptions,
   });
 
   // Create post
@@ -247,6 +263,7 @@ async function main() {
     categories: categoryId ? [categoryId] : [],
     tags: tagIds,
     featuredMediaId: media?.id,
+    requestOptions,
   });
 
   // Verify public URL
