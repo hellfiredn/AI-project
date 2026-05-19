@@ -1,8 +1,12 @@
-name: "Tạp Hóa Giảm Giá: Đăng bài SEO mỗi tối"
+name: "Tạp Hóa Giảm Giá: Đăng bài SEO 2 lần/ngày"
 
 on:
-  # Manual only. Scheduled publishing is disabled so GitHub will not auto-post.
   workflow_dispatch: {}
+  schedule:
+    # 08:00 Asia/Ho_Chi_Minh (UTC+7) = 01:00 UTC
+    - cron: "0 1 * * *"
+    # 15:00 Asia/Ho_Chi_Minh (UTC+7) = 08:00 UTC
+    - cron: "0 8 * * *"
 
 permissions:
   contents: read
