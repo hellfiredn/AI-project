@@ -1,0 +1,2 @@
+Xin chào, đây là bản thử giọng tiếng Việt được tạo bằng Google Cloud Text-to-Speech.
+Bạn có thể thay nội dung trong file này bằng kịch bản video của mình, rồi chạy lệnh tạo file MP3.

@@ -6,6 +6,7 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "@google-cloud/text-to-speech": "^6.4.1",
     "@remotion/cli": "4.0.460",
     "@remotion/google-fonts": "^4.0.460",
     "@remotion/media": "^4.0.460",
@@ -25,6 +26,7 @@
   },
   "scripts": {
     "dev": "remotion studio",
+    "tts:google": "node scripts/google-tts.mjs --text-file scripts/narration.example.txt --out public/narration.mp3",
     "render:explainer": "remotion render ExplainerShort out/explainer-short.mp4",
     "render:openai": "remotion render OpenAIAnnouncementShort out/openai-announcement-short.mp4",
     "build": "remotion bundle",
