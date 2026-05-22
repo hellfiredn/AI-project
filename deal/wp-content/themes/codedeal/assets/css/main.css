@@ -643,6 +643,18 @@ a:hover { color: var(--cd-primary-dark); }
 .cd-prose h2 { font-size: 24px; margin: 32px 0 12px; }
 .cd-prose a { text-decoration: underline; color: var(--cd-primary); }
 .cd-prose ul, .cd-prose ol { padding-left: 20px; margin-bottom: 16px; }
+.cd-prose img,
+.cd-prose video,
+.cd-prose iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 16px auto;
+    border-radius: 8px;
+}
+.cd-prose figure { margin: 16px 0; max-width: 100%; }
+.cd-prose figure img { margin: 0 auto; }
+.cd-prose figcaption { font-size: 14px; color: var(--cd-muted, #64748B); text-align: center; margin-top: 8px; }
 
 /* ----------------------------------------------------------- *
  *  FOOTER

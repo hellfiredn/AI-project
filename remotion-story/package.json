@@ -25,6 +25,8 @@
   },
   "scripts": {
     "dev": "remotion studio",
+    "render:explainer": "remotion render ExplainerShort out/explainer-short.mp4",
+    "render:openai": "remotion render OpenAIAnnouncementShort out/openai-announcement-short.mp4",
     "build": "remotion bundle",
     "upgrade": "remotion upgrade",
     "lint": "eslint src && tsc"

@@ -109,3 +109,56 @@ Giúp tôi xây kênh đều đặn và tăng lượt theo dõi tự nhiên theo
 ✅ Đúng:
 "Hướng dẫn tôi 3 bước đơn giản để bắt đầu xây thương hiệu cá nhân online dành cho người đi làm: 1) Chọn một chủ đề mình có chuyên môn. 2) Dùng AI để hỗ trợ viết bài, làm video. 3) Phát triển kênh trên Facebook, Zalo hoặc LinkedIn theo hướng chuyên nghiệp - rõ ràng - đúng đối tượng."
 👉 Kết quả: Không chỉ có định hướng mà còn có ngay lộ trình hành động cụ thể để bắt đầu từ hôm nay.
+
+
+*** facebook reel
+1️⃣ Prompt: Tạo ý tưởng video dễ viral
+Mục tiêu: Không bí content, đánh trúng insight
+Prompt:
+“Tạo 10 ý tưởng video Reels về chủ đề [X], hướng đến [đối tượng].
+Mỗi ý tưởng cần có:
+– Hook gây chú ý 3 giây đầu
+– Nội dung chính
+– Góc tiếp cận khác biệt hoặc gây tranh luận nhẹ
+Ưu tiên nội dung khiến người xem phải dừng lại.”
+2️⃣ Prompt: Viết kịch bản giữ chân người xem
+Mục tiêu: Tăng thời gian xem (watch time)
+Prompt:
+“Viết kịch bản video Reels 30–60s về [chủ đề], gồm:
+– Hook cực mạnh 3 giây đầu
+– Nội dung chia thành từng đoạn ngắn
+– Cao trào ở giữa video
+– Kết thúc mở để giữ người xem
+Đảm bảo nhịp nhanh, dễ hiểu, có cảm xúc.”
+3️⃣ Prompt: Tối ưu hook “giữ mắt”
+Mục tiêu: Không bị lướt qua
+Prompt:
+“Viết 5 hook mở đầu cho video về [chủ đề], theo phong cách:
+– Gây sốc
+– Đánh vào nỗi đau
+– Tạo tò mò
+– Phản trực giác
+Hook phải khiến người xem nghĩ: ‘Ủa, cái này nói mình à?"
+4️⃣ Prompt: Viết caption kích thích tương tác
+Mục tiêu: Tăng comment, share
+Prompt:
+“Viết caption cho video Reels về [chủ đề]:
+– Mở đầu gây tò mò
+– Tóm tắt giá trị video
+– Kết thúc bằng câu hỏi mở để kích thích bình luận
+Giọng văn gần gũi, dễ tạo tranh luận nhẹ.”
+5️⃣ Prompt: Tạo CTA chuyển đổi (bán hàng / follow)
+Mục tiêu: Biến view thành tiền
+Prompt:
+“Dựa trên nội dung video này, viết 3 CTA:
+– 1 CTA kêu gọi follow
+– 1 CTA kéo inbox
+– 1 CTA bán hàng nhẹ
+CTA phải tự nhiên, không lộ liễu quảng cáo.”
+6️⃣ Prompt: Nhân bản video viral
+Mục tiêu: Scale nhanh, không nghĩ lại từ đầu
+Prompt:
+“Dựa trên video này, hãy:
+– Tạo 5 phiên bản nội dung mới với góc nhìn khác
+– Thay đổi hook, ví dụ, cách kể
+– Giữ nguyên insight cốt lõi nhưng làm mới cách thể hiện
